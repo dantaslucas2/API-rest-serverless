@@ -4,6 +4,9 @@ import dynamoDb from "./libs/dynamodb-lib";
 
 export const main = handler(async (event, context) => {
   const data = JSON.parse(event.body);
+  console.log(data);
+  console.log("###################################################################################");
+
   const params = {
     TableName: process.env.tableName,
     Item: {
@@ -12,7 +15,12 @@ export const main = handler(async (event, context) => {
       noteId: uuid.v1(), // A unique uuid
       content: data.content, // Parsed from request body
       attachment: data.attachment, // Parsed from request body
-      createdAt: Date.now(), // Current Unix timestamp
+      createdAt: Date.now(),
+      nome: data.nome,// Current Unix timestamp
+      telefone: data.telefone,
+      modelo: data.modelo,
+      quantidade: data.quantidade,
+      email: data.email,
     },
   };
 
